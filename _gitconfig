@@ -1,0 +1,28 @@
+[user]
+	email = linusyen@kkbox.com
+	name = linusyen
+[color]
+        ui = auto
+[color "diff"]
+        meta = yellow bold
+        frag = magenta bold
+        old  = red bold
+        new  = green bold
+[color "status"]
+        header = bold
+        added = green bold
+        updated = yellow bold
+        changed = magenta bold
+[core]
+        editor = vim 
+	pager = less -R
+	excludesfile = /home/linusyen/.gitignore
+
+[merge]
+        tool = vim
+[alias]
+        ci = commit
+        di = diff
+        st = status
+        co = checkout
+        lono = log --name-only
