@@ -1,6 +1,6 @@
 deflogin on
 #autodetach off
-vbell on
+vbell off
 vbell_msg "   Wuff  ----  Wuff!!  "
 # 設定每個視窗的標題
 caption always "%{= wk} %{= KY} [%n]%t @ %H %{-} %= %{= KR} %l %{-} | %{= KG} %Y-%m-%d %{-} "

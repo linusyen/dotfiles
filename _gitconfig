@@ -1,6 +1,6 @@
 [user]
-	email = linusyen@kkbox.com
-	name = linusyen
+        email = linusyen@kkbox.com
+        name = Linus Yen
 [color]
         ui = auto
 [color "diff"]
@@ -14,9 +14,9 @@
         updated = yellow bold
         changed = magenta bold
 [core]
-        editor = vim 
-	pager = less -R
-	excludesfile = /home/linusyen/.gitignore
+        editor = vim
+        pager = less -R
+        excludesfile = /home/linusyen/.gitignore_global
 
 [merge]
         tool = vim
@@ -26,3 +26,7 @@
         st = status
         co = checkout
         lono = log --name-only
+        br = branch
+        sta = stash
+        stapo = stash pop
+        bl = blame

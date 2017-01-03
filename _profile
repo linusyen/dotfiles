@@ -12,11 +12,11 @@ PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/local/sbin:/usr/local/bin:$HO
 # if you're sure that you'll never log in via telnet or xterm or a
 # serial line.
 # Use cons25l1 for iso-* fonts
-# TERM=cons25; 	export TERM
+# TERM=cons25; =export TERM
 
-BLOCKSIZE=K;	export BLOCKSIZE
-EDITOR=vim;   	export EDITOR
-PAGER=more;  	export PAGER
+BLOCKSIZE=K;    export BLOCKSIZE
+EDITOR=vim;     export EDITOR
+PAGER=more;     export PAGER
 
 # set ENV to a file invoked each time sh is started for interactive use.
 ENV=$HOME/.shrc; export ENV
@@ -24,11 +24,14 @@ ENV=$HOME/.shrc; export ENV
 [ -x /usr/games/fortune ] && /usr/games/fortune freebsd-tips
 
 export LC_ALL=zh_TW.UTF-8
-export LANG=zh_TW 
+export LANG=zh_TW.
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
-
-PS1='\[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\e[1;37m\]'
+function git_branch {
+    ref=$(git symbolic-ref HEAD 2> /dev/null) || return;
+    echo "("${ref#refs/heads/}") ";
+}
+PS1="\[\e[1;32m\][\h]\[\e[m\] \[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\033[0m\]\[\033[1;36m\]\$(git_branch)\[\e[1;32m\]\$\[\e[m\] \[\e[1;37m\]"
 DIR=Dx
 SYM_LINK=Gx
 SOCKET=Fx
@@ -41,9 +44,34 @@ EXE_GUID=ad
 DIR_STICKY=Ex
 DIR_WO_STICKY=Ex
 export LSCOLORS="$DIR$SYM_LINK$SOCKET$PIPE$EXE$BLOCK_SP$CHAR_SP$EXE_SUID$EXE_GUID$DIR_STICKY$DIR_WO_STICKY"
-alias ls="ls -G"
-alias ll="ls -l"
+alias ls='ls -G --color'
+alias ll="ls -al"
 alias la="ls -al"
-alias grep="grep --color=auto" 
+alias ..="cd .."
+alias s="screen"
+#alias grep="grep --color=auto".
 alias js="jobs"
+alias sw1="ssh web-billing-1"
+alias sw2="ssh web-billing-2"
+alias sw3="ssh web-billing-3"
+alias sw4="ssh web-billing-4"
+alias sw5="ssh web-billing-5"
+alias sws="ssh web-billing-staging"
+alias scb="ssh cron-billing"
+alias sb2="ssh bs2"
+alias sb1a="ssh bs1a"
+alias sb1b="ssh bs1b"
+alias sb1c="ssh bs1c"
+alias swt1="ssh kkbox-test-web-billing-1"
+alias swt2="ssh kkbox-test-web-billing-2"
+alias vpu="vendor/bin/phpunit"
+alias phpcs="/home/linusyen/kkcorp/natu/vendor/bin/phpcs --standard=PSR2"
+alias apigen="php ~/tool/apigen.phar"
+alias clearlocalbr="git branch --merged | grep -v \"\*\" | grep -v master | grep -v dev | xargs -n 1 git branch -d"
+alias compinst="composer install"
 
+[[ -s "/etc/bash_completion" ]] && source "/etc/bash_completion"
+[[ -s "/usr/local/share/bash-completion/bash_completion" ]] && source "/usr/local/share/bash-completion/bash_completion"
+[[ -s "/usr/local/share/git-core/contrib/completion/git-completion.bash" ]] && source "/usr/local/share/git-core/contrib/completion/git-completion.bash"
+
+declare -x LS_COLORS="no=00:fi=01:di=01;33:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zp=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=0;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=0;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:"
